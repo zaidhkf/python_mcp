@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Data Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<main>
+  <header>
+    <span class="eyebrow">YOUR DATA ASSISTANT</span>
+    <h1>Make sense of your data.</h1>
+    <p>Bring a file, ask a question, and explore the answers together.</p>
+  </header>
+  <section class="workspace">
+    <aside>
+      <h2>Your files</h2>
+      <p id="file-help">Add a spreadsheet or document, then choose a file below to ask questions about it. You can use CSV, Excel, PDF, text, or Markdown files.</p>
+      <form id="upload">
+        <label for="upload-file">Choose a file</label>
+        <input id="upload-file" type="file" name="file" required accept=".csv,.xlsx,.txt,.md,.pdf" aria-describedby="file-help">
+        <button>Add file</button>
+      </form>
+      <p id="upload-status" role="status"></p>
+      <div id="dataset-metadata"></div>
+      <p class="active-label">Currently using</p>
+      <p id="active-dataset">No file selected</p>
+      <ul id="files"></ul>
+      <button id="health" type="button">Check connections</button>
+      <p id="health-status" role="status"></p>
+    </aside>
+    <article>
+      <h2>What would you like to know?</h2>
+      <p>Ask in your own words. Try “What are the main trends in this file?” or “Show me the top five by revenue.” You can ask about information on the web, too.</p>
+      <div id="messages" aria-live="polite"></div>
+      <form id="chat">
+        <label for="question">Ask a question</label>
+        <textarea id="question" required maxlength="10000" placeholder="What would you like to find out?"></textarea>
+        <button id="send">Send question <span aria-hidden="true">↗</span></button>
+      </form>
+    </article>
+  </section>
+</main>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
